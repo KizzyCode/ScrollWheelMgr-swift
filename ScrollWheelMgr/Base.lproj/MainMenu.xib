@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="uN0-KO-6Tj"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="ScrollWheelMgr" customModuleProvider="target">
+            <connections>
+                <outlet property="autostartSwitch" destination="Csc-gX-rpd" id="b06-VN-ngE"/>
+                <outlet property="mapClickToMissionControlSwitch" destination="jX0-hp-1vD" id="QMw-bs-y6d"/>
+                <outlet property="menu" destination="9wC-0t-Nst" id="vJ0-Ry-LIm"/>
+                <outlet property="tiltOnOffAutomaticallySwitch" destination="uPB-ez-gqk" id="0eF-KS-Tdn"/>
+                <outlet property="tiltOnOffSwitch" destination="gRy-8J-Rq0" id="oMI-FN-EtW"/>
+            </connections>
+        </customObject>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customView id="dXU-YL-R2r" userLabel="StatusItemView">
+            <rect key="frame" x="0.0" y="0.0" width="26" height="22"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Orb-MT-1UW">
+                    <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="3n7-be-G3e"/>
+                        <constraint firstAttribute="width" constant="22" id="zJi-eF-WYr"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="🍀" id="zfD-Gi-emU">
+                        <font key="font" size="13" name="AppleColorEmoji"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Orb-MT-1UW" firstAttribute="centerY" secondItem="dXU-YL-R2r" secondAttribute="centerY" constant="-2" id="HdO-JJ-oTb"/>
+                <constraint firstItem="Orb-MT-1UW" firstAttribute="centerX" secondItem="dXU-YL-R2r" secondAttribute="centerX" id="nsx-fp-uwH"/>
+                <constraint firstItem="Orb-MT-1UW" firstAttribute="leading" secondItem="dXU-YL-R2r" secondAttribute="leading" constant="2" id="s71-dv-3Wq"/>
+                <constraint firstItem="Orb-MT-1UW" firstAttribute="centerY" secondItem="dXU-YL-R2r" secondAttribute="centerY" constant="-2" id="w8r-Dk-dKN"/>
+            </constraints>
+            <point key="canvasLocation" x="-34" y="179"/>
+        </customView>
+        <menu id="9wC-0t-Nst" userLabel="StatusItemMenu">
+            <items>
+                <menuItem title="Map Tilt to F5/F5" id="U31-9l-VmN">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <outlet property="view" destination="A0T-w3-lgP" id="SQY-Ia-UqH"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="xRZ-WN-HMi"/>
+                <menuItem title="Map Scroll-Click to Mission Control" id="eoU-WX-OUB">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <outlet property="view" destination="Pfo-1o-Z6a" id="OKa-yO-WMB"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Autostart on Login" id="sXt-l7-XNg">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <outlet property="view" destination="6Ww-rc-O2R" id="RmK-A4-pts"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Rdm-Ap-cU5"/>
+                <menuItem title="Quit ScrollWheelMgr" keyEquivalent="q" id="E7u-Po-0gA">
+                    <connections>
+                        <action selector="terminateApp:" target="Voe-Tx-rLC" id="XiT-FN-tja"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-2" y="45"/>
+        </menu>
+        <customView id="A0T-w3-lgP" userLabel="MenuMapTilt">
+            <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="gRy-8J-Rq0">
+                    <rect key="frame" x="225" y="2" width="42" height="25"/>
+                    <connections>
+                        <action selector="tiltOnOff:" target="Voe-Tx-rLC" id="2gX-Gy-adn"/>
+                    </connections>
+                </switch>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cTP-ix-9RR">
+                    <rect key="frame" x="13" y="7" width="206" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Map Tilt to F5/F6" id="KwX-V8-k6c">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="gRy-8J-Rq0" firstAttribute="centerY" secondItem="A0T-w3-lgP" secondAttribute="centerY" id="5Fh-yo-hs4"/>
+                <constraint firstItem="cTP-ix-9RR" firstAttribute="centerY" secondItem="A0T-w3-lgP" secondAttribute="centerY" id="Emc-Ec-guI"/>
+                <constraint firstItem="gRy-8J-Rq0" firstAttribute="leading" secondItem="cTP-ix-9RR" secondAttribute="trailing" constant="10" id="NEC-dn-LtR"/>
+                <constraint firstAttribute="trailing" secondItem="gRy-8J-Rq0" secondAttribute="trailing" constant="15" id="eBF-gE-9yS"/>
+                <constraint firstItem="cTP-ix-9RR" firstAttribute="leading" secondItem="A0T-w3-lgP" secondAttribute="leading" constant="15" id="yca-4X-Fx9"/>
+            </constraints>
+            <point key="canvasLocation" x="319" y="-11"/>
+        </customView>
+        <customView id="K4G-J9-v1W" userLabel="MenuMapTiltAuto">
+            <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="uPB-ez-gqk">
+                    <rect key="frame" x="225" y="2" width="42" height="25"/>
+                    <connections>
+                        <action selector="tiltOnOffAutomatically:" target="Voe-Tx-rLC" id="sqB-8T-loc"/>
+                    </connections>
+                </switch>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZMB-u2-ESp">
+                    <rect key="frame" x="13" y="7" width="206" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Manage &quot;Map Tilt&quot; Automatically" id="R7x-qU-crm">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="ZMB-u2-ESp" firstAttribute="leading" secondItem="K4G-J9-v1W" secondAttribute="leading" constant="15" id="44K-EK-ETe"/>
+                <constraint firstItem="uPB-ez-gqk" firstAttribute="leading" secondItem="ZMB-u2-ESp" secondAttribute="trailing" constant="10" id="Qd7-Fh-6Of"/>
+                <constraint firstItem="uPB-ez-gqk" firstAttribute="centerY" secondItem="K4G-J9-v1W" secondAttribute="centerY" id="S62-5K-Dm8"/>
+                <constraint firstItem="ZMB-u2-ESp" firstAttribute="centerY" secondItem="K4G-J9-v1W" secondAttribute="centerY" id="ceA-pv-7Ni"/>
+                <constraint firstAttribute="trailing" secondItem="uPB-ez-gqk" secondAttribute="trailing" constant="15" id="laf-uS-8tj"/>
+            </constraints>
+            <point key="canvasLocation" x="319" y="63"/>
+        </customView>
+        <customView id="Pfo-1o-Z6a" userLabel="MenuMapClickToMissionControl">
+            <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="jX0-hp-1vD">
+                    <rect key="frame" x="225" y="2" width="42" height="25"/>
+                    <connections>
+                        <action selector="mapClickToMissionControl:" target="Voe-Tx-rLC" id="GvO-hL-a3J"/>
+                    </connections>
+                </switch>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hEM-U2-d4l">
+                    <rect key="frame" x="13" y="7" width="206" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Map Click to Mission Control" id="Vfz-hR-3Y1">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="jX0-hp-1vD" secondAttribute="trailing" constant="15" id="Qsg-Pf-dy9"/>
+                <constraint firstItem="hEM-U2-d4l" firstAttribute="centerY" secondItem="Pfo-1o-Z6a" secondAttribute="centerY" id="dTN-3e-uUf"/>
+                <constraint firstItem="jX0-hp-1vD" firstAttribute="centerY" secondItem="Pfo-1o-Z6a" secondAttribute="centerY" id="mJw-PG-nrS"/>
+                <constraint firstItem="jX0-hp-1vD" firstAttribute="leading" secondItem="hEM-U2-d4l" secondAttribute="trailing" constant="10" id="sum-5b-OEj"/>
+                <constraint firstItem="hEM-U2-d4l" firstAttribute="leading" secondItem="Pfo-1o-Z6a" secondAttribute="leading" constant="15" id="yk1-rA-WtJ"/>
+            </constraints>
+            <point key="canvasLocation" x="319" y="137"/>
+        </customView>
+        <customView id="6Ww-rc-O2R" userLabel="SettingAutostart">
+            <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="Csc-gX-rpd">
+                    <rect key="frame" x="225" y="2" width="42" height="25"/>
+                    <connections>
+                        <action selector="autostart:" target="Voe-Tx-rLC" id="cls-iQ-fwd"/>
+                    </connections>
+                </switch>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XGr-Tt-Hzj">
+                    <rect key="frame" x="13" y="7" width="206" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Autostart on Login" id="R0L-HS-f68">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="XGr-Tt-Hzj" firstAttribute="centerY" secondItem="6Ww-rc-O2R" secondAttribute="centerY" id="W9q-AN-Mir"/>
+                <constraint firstAttribute="trailing" secondItem="Csc-gX-rpd" secondAttribute="trailing" constant="15" id="hTo-Tf-dUF"/>
+                <constraint firstItem="Csc-gX-rpd" firstAttribute="leading" secondItem="XGr-Tt-Hzj" secondAttribute="trailing" constant="10" id="jPq-Na-i0T"/>
+                <constraint firstItem="Csc-gX-rpd" firstAttribute="centerY" secondItem="6Ww-rc-O2R" secondAttribute="centerY" id="jVn-y4-Zoe"/>
+                <constraint firstItem="XGr-Tt-Hzj" firstAttribute="leading" secondItem="6Ww-rc-O2R" secondAttribute="leading" constant="15" id="s98-LJ-AMK"/>
+            </constraints>
+            <point key="canvasLocation" x="319" y="210"/>
+        </customView>
+    </objects>
+</document>
